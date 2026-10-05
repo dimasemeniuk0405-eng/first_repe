@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наші переваги</title>
+<style>
+:root {
+  --space-5: 30px;
+  --motion-fast: 0.3s;
+  --ease-out: ease-out;
+}
+
+/* ===== Секція переваг ===== */
+.advantages {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.advantages h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #1a1a1a;
+}
+
+.cards {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Одна картка */
+.card {
+  flex: 1 1 300px;
+  max-width: 350px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card .icon {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.35rem;
+  margin: 0 0 12px;
+  color: #222;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+
+/* ===== Секція відгуків ===== */
+.reviews {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.reviews__row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--space-5);
+}
+
+.review-card {
+  flex: 1 1 0;
+  padding: 35px 25px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.review-card:hover {
+  transform: translateY(-12px);
+}
+
+.review-card__photo {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-card__star {
+  color: #dddddd;
+}
+
+.review-card__star.is-on {
+  color: #f5b301;
+}
+
+/* ===== Адаптивність ===== */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<section class="advantages">
+  <h2>Наші переваги</h2>
+
+  <div class="cards">
+    <div class="card">
+      <span class="icon">🚀</span>
+      <h3>Швидкість</h3>
+      <p>Оперативна реалізація проєктів без втрати якості. Дотримуємося термінів і швидко реагуємо на запити.</p>
+    </div>
+
+    <div class="card">
+      <span class="icon">💎</span>
+      <h3>Якість</h3>
+      <p>Увага до деталей, сучасні технології та перевірені рішення, які працюють стабільно довгий час.</p>
+    </div>
+
+    <div class="card">
+      <span class="icon">🛡</span>
+      <h3>Надійність</h3>
+      <p>Прозорі процеси, підтримка після запуску та відповідальність за результат на кожному етапі.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="reviews-title">
+  <header class="reviews__intro">
+    <p class="reviews__eyebrow">Голоси клієнтів</p>
+    <h2 class="reviews__title" id="reviews-title">Відгуки</h2>
+    <p class="reviews__lead">
+      Три короткі історії про спільну роботу — без рекламних штампів.
+    </p>
+  </header>
+  <div class="reviews__row" id="reviews-row">
+    <p class="reviews__pending">Завантаження відгуків…</p>
+  </div>
+</section>
+
+<script>
+function mountReviews() { // головна функція: малює 3 картки
+  const row = document.getElementById("reviews-row"); // контейнер секції
+  if (!row) { // HTML ще не на сторінці
+    return;
+  }
+
+  row.textContent = ""; // прибираємо «Завантаження…» і старі картки
+
+  const reviews = [ // дані: JS сам побудує з них DOM
+    {
+      name: "Олена Коваль",
+      photo: "reviews/olena.jpg",
+      text: "Сайт зібрали за два тижні…",
+      rating: 5,
+    },
+    {
+      name: "Андрій Мельник",
+      photo: "reviews/andriy.jpg",
+      text: "Спочатку показали структуру…",
+      rating: 5,
+    },
+    {
+      name: "Марія Шевченко",
+      photo: "reviews/maria.jpg",
+      text: "Потрібен був тихий, серйозний сайт…",
+      rating: 4,
+    },
+  ];
+  
+
+  function makeStars(rating) { // 5 зірок за числом rating
+    const wrap = document.createElement("p");
+    wrap.className = "review-card__stars";
+    wrap.setAttribute("aria-label", "Оцінка: " + rating + " з 5");
+
+    for (let i = 1; i <= 5; i += 1) { // рівно п'ять зірок
+      const star = document.createElement("span");
+      star.className = i <= rating ? "review-card__star is-on" : "review-card__star";
+      star.textContent = "★"; // порожня теж ★, лише блідіша
+      star.setAttribute("aria-hidden", "true");
+      wrap.appendChild(star);
+    }
+    return wrap;
+  }
+
+  function makeCard(item) { // один об'єкт → одна картка
+    const card = document.createElement("article");
+    card.className = "review-card";
+
+    const photo = document.createElement("img");
+    photo.className = "review-card__photo";
+    photo.src = item.photo;
+    photo.alt = item.name;
+    photo.width = 72;
+    photo.height = 72; // квадрат → коло через border-radius: 50%
+
+    const name = document.createElement("h3");
+    name.className = "review-card__name";
+    name.textContent = item.name; // textContent, не innerHTML — безпечно
+
+    const text = document.createElement("p");
+    text.className = "review-card__text";
+    text.textContent = item.text;
+
+    card.appendChild(photo);
+    card.appendChild(name);
+    card.appendChild(makeStars(item.rating));
+    card.appendChild(text);
+    return card;
+  }
+
+  reviews.forEach(item => row.appendChild(makeCard(item)));
+}
+
+mountReviews(); // тут треба запускати
+</script>
+
+</body>
+</html>
