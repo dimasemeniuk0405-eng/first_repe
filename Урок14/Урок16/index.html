@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -16,7 +17,7 @@
         </nav>
         <div class="icons">
             <a href="instagram.com">
-                <img src="./images/Inst.svg">
+                <img src="./images/instagram.svg">
             </a>
             <a href="facebook.com">
                 <img src="./images/Facebook.svg">
@@ -115,13 +116,64 @@
             </a>
             <img src="./images/hand_icecream.png" />
         </div>
+        <section id="contact" class="contact">
+            <h2>Зв'яжіться з нами</h2>
+            <form action="#">
+                <label> Ваше ім'я
+                    <input type="text" name="name" placeholder="Інна Шевченко" required/>
+                </label>
+                <label> Ваш Email
+                    <input type="email" name="email" placeholder="gmail@gmail.com" required/>
+                </label>
+                <label> Ваше повідомлення
+                    <input type="text" name="message" placeholder="Повідомлення йде тут..." required/>
+                </label>
+                <button type="submit">Відправити</button>
+            </form>
+        </section>
     </main>
+    <footer>
+        <div class="footer-column">
+            <img src="./images/kabanos_logo.png" alt="іконка" width="60px" height="60px"/>
+            <p>Смачне морозиво
+            </p>
+            <div class="icons">
+                <a href="https://instagram.com">
+                    <img src="./images/Inst.svg">
+                </a>
+                <a href="https://facebook.com">
+                    <img src="./images/Facebook.svg">
+                </a>
+                <a href="https://tiktok.com">
+                    <img src="./images/TikTok.svg">
+                </a>
+                <a href="https://youtube.com">
+                    <img src="./images/YouTube.svg">
+                </a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <nav>
+                <a href="#hero">Main</a>
+                <a href="#about">About Us</a>
+                <a href="#products">Products</a>
+                <a href="#app">App</a>
+                <a href="#contact">Contact form</a>
+            </nav>
+        </div>
+        <div class="footer-column">
+            <h3>Contacts</h3>
+            <a href="tel:+380631234567">+380631234567</a>
+            <a href="mail:info@kabanosy.com">info@kabanosy.com</a>
+        </div>
+        <div class="footer-column">
+            <h3>Location</h3>
+            <p>вул. Хрещатик 1, Київ, Україна</p>
+            <p>просп. Свободи 2, Львів, Україна</p>
+        </div>
+    </footer>
+
 </body>
 </html>
-<!-- <div class="product">
-    <img src="" />
-    <h2>brown bread</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam et voluptatem repudiandae perspiciatis earum, quam excepturi repellat sapiente eius ad tenetur delectus dolores veritatis placeat aliquam sunt. Error, repellendus facilis?</p>
-    <span>19.55</span>
     <button>Buy now</button>
-</div> -->
+</div>
